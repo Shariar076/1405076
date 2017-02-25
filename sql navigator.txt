@@ -17,3 +17,17 @@ SELECT first_name,EMPLOYEE_id FROM employees where FIRST_NAME= 'Donald';
 SELECT first_name,EMPLOYEE_id FROM employees where FIRST_NAME like 'D_u%';
 
 SELECT first_name||' '||LAST_NAME "Full Name",EMPLOYEE_id FROM employees where FIRST_NAME like 'D_u%'; --|| concat
+
+--Aggregate Functions
+
+SELECT COUNT(DISTINCT DEPARTMENT_ID) from EMPLOYEES;
+
+SELECT avg(salary) from EMPLOYEES where DEPARTMENT_ID=20;
+
+SELECT DEPARTMENT_ID,avg(salary) from EMPLOYEES GROUP BY DEPARTMENT_Id;
+
+SELECT JOB_ID,DEPARTMENT_ID,avg(salary) from EMPLOYEES GROUP BY DEPARTMENT_Id,JOB_ID;
+
+SELECT JOB_ID,DEPARTMENT_ID,avg(salary) from EMPLOYEES WHERE DEPARTMENT_ID=110 GROUP BY DEPARTMENT_Id,JOB_ID;
+
+SELECT JOB_ID,DEPARTMENT_ID,avg(salary) from EMPLOYEES WHERE DEPARTMENT_ID=110 GROUP BY DEPARTMENT_Id,JOB_ID having avg(SALARY)>9000; --having written after group by
