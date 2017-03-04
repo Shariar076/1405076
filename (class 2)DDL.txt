@@ -1,0 +1,34 @@
+create table Student(
+StdID number constraint prj_pk primary key,
+StdName VARCHAR2(80)
+);
+
+INSERT into Student values (1,'XYZ');
+
+insert into Student(StdID,StdName,courseNo) values (1,'XYZ','wtdef');
+
+insert into Student(StdName,StdID) values ('ABC',2);
+
+SELECT * from student;
+
+INSERT INTO Student(StdID,StdName) SELECT EMPLOYEE_ID,first_name FROM EMPLOYEES;
+
+UPDATE student set stdname='Donald Trump' where stdid=198;
+
+DELETE FROM student where stdid=198;
+
+DELETE FROM student;
+
+alter table student add (courseNo VARCHAR2(50),courseName VARCHAR2(80) default 'CSE 304');
+
+alter table student MODIFY (courseName VARCHAR2(80) default 'CSE 3045');--has no effect on previously saved data
+
+CREATE table exstd(
+stdID1 NUMBER constraint std_id primary key,
+stdname varchar2(50) not null,
+constraint fk_std
+foreign key(stdID1)
+references student(StdID)
+);
+
+drop TABLE student;
